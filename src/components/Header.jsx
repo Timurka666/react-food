@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
+
 export function Header() {
     return (
         <nav className="amber darken-2">
             <div className="nav-wrapper">
-                <a href="#" className="brand-logo">Logo</a>
+                <Link to="/" className="brand-logo">React Food</Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/contacts">Contacts</Link></li>
                 </ul>
             </div>
         </nav>
