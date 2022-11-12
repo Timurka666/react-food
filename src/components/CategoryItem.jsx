@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 
 export function CategoryItem(props) {
     const {
-        idCategory,
         strCategory,
         strCategoryThumb,
         strCategoryDescription
     } = props;
 
     return (
-        <div className="category-item card">
+        <div className="item card">
             <div className="card-image">
                 <img src={strCategoryThumb} alt={strCategory} />
             </div>
@@ -18,7 +17,7 @@ export function CategoryItem(props) {
                 <p>{strCategoryDescription.slice(0, 60)}...</p>
             </div>
             <div className="card-action">
-                <Link to={`/category/${idCategory}`} className="btn">Watch category</Link>
+                <Link to={`/category/${strCategory}`} className="btn yellow darken-3">Watch category</Link>
             </div>
         </div>
     );
