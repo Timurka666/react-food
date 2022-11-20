@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { getAllCategories } from "../../api";
 import { Preloader } from "../Preloader";
 import { CategoryList } from "../CategoryList";
@@ -8,17 +8,17 @@ import { Search } from "../Search";
 export function Home() {
     const [catalog, setCatalog] = useState([]);
     const [filteredCatalog, setFilteredCatalog] = useState([]);
-    const {pathName, search} = useLocation();
-    const {push} = useHistory();
+    const {search} = useLocation();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const searchStr = searchParams.get('search') || '';
 
     const handleSearch = (str) => {
         setFilteredCatalog(
-            catalog.filter(item => item.strCategory.toLowerCase().includes(str.toLowerCase()))
+            catalog.filter(item => item.strCategory.toLowerCase().includes(searchStr.toLowerCase()))
         );
-        push({
-            pathName,
-            search: `?search=${str}`
-        });
+        setSearchParams({search: str});
+        
     };
 
 

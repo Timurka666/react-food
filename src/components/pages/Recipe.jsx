@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getMealById } from "../../api";
 import { useEffect, useState } from "react";
 import { Preloader } from "../Preloader";
@@ -6,7 +6,9 @@ import { Preloader } from "../Preloader";
 export function Recipe() {
     const {id} = useParams();
     const [recipe, setRecipe] = useState({});
-    const {goBack} = useHistory();
+    const navigate = useNavigate();
+
+    const goBack = () => navigate(-1);
 
     useEffect(() => {
         getMealById(id).then(data => (setRecipe(data.meals[0])));
